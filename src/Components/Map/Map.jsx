@@ -11,7 +11,7 @@ import { SelectTaxi } from "../SelectTaxi/SelectTaxi";
 import { Routing } from "../Routing/Routing";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3000", {
+const socket = io("https://taxi-web-app-server-novda.koyeb.app/", {
   port: 3000,
 });
 
