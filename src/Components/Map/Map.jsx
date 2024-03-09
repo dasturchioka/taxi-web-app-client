@@ -109,7 +109,7 @@ export const Map = () => {
               />
             </Routes>
           </div>
-          <TileLayer url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png" />
+          <TileLayer url="https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=N3MqJcqPUczcjAdSTBajt6UpuSt6dao04rmOz1EzZSN20O1p59aydcPcoHEK3wBD" />
           <Routing position={position} last={last} />
           <LocationMarker />
         </MapContainer>
