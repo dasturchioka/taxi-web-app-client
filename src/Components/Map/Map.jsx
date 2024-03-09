@@ -11,7 +11,7 @@ import { SelectTaxi } from "../SelectTaxi/SelectTaxi";
 import { Routing } from "../Routing/Routing";
 import { io } from "socket.io-client";
 
-const socket = io("https://taxi-web-app-server-novda.koyeb.app/", {
+const socket = io("http://localhost:3000", {
   port: 3000,
 });
 
@@ -82,6 +82,18 @@ export const Map = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      socket.emit("leave", { left: true });
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   return (
     <>
       {position && (
@@ -111,7 +123,7 @@ export const Map = () => {
               />
             </Routes>
           </div>
-          <TileLayer url="https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=N3MqJcqPUczcjAdSTBajt6UpuSt6dao04rmOz1EzZSN20O1p59aydcPcoHEK3wBD" />
+          <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <Routing position={position} last={last} />
           <LocationMarker />
         </MapContainer>
