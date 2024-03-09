@@ -11,7 +11,9 @@ import { SelectTaxi } from "../SelectTaxi/SelectTaxi";
 import { Routing } from "../Routing/Routing";
 import { io } from "socket.io-client";
 
-const socket = io("ws://localhost:3000");
+const socket = io("https://taxi-web-app-server-novda.koyeb.app/", {
+  port: 3000,
+});
 
 function LocationMarker() {
   const [position, setPosition] = useState(null);
